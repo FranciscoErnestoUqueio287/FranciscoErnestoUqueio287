@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francisco Ernesto Uqueio | Engenheiro Civil & Cientista de Dados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #f0f4f8;
+      --bg-secondary: #e1e8ed;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8fafc;
+      
+      --text-primary: #1a1a2e;
+      --text-secondary: #4a5568;
+      --text-muted: #9ca3af;
+      
+      --accent-primary: #667eea;
+      --accent-secondary: #764ba2;
+      --accent-success: #48bb78;
+      --accent-warning: #ed8936;
+      
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-secondary: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+      --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      --gradient-bg: linear-gradient(135deg, #f0f4f8 0%, #e1e8ed 100%);
+      --gradient-header: linear-gradient(-45deg, #667eea, #764ba2, #4299e1, #48bb78);
+
+      --shadow-sm: 0 4px 6px rgba(102, 126, 234, 0.1);
+      --shadow-md: 0 10px 30px rgba(102, 126, 234, 0.15);
+      --shadow-lg: 0 20px 50px rgba(26, 26, 46, 0.15);
+      --shadow-glow: 0 0 20px rgba(102, 126, 234, 0.4);
+      
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
+      
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      animation: floatShape 20s infinite alternate;
+      max-width: 100%;
+    }
+    .shape-1 {
+      top: 10%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: rgba(102, 126, 234, 0.15);
+    }
+    .shape-2 {
+      bottom: 20%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: rgba(118, 75, 162, 0.15);
+      animation-delay: -5s;
+    }
+
+    @keyframes floatShape {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(30px, 30px) rotate(20deg); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .header {
+      background: var(--gradient-header);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      max-width: 100%;
+    }
+
+    .profile-image-container {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.4);
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+      transition: var(--transition);
+      animation: floatProfile 6s ease-in-out infinite;
+      background-color: #fff;
+    }
+
+    @keyframes floatProfile {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .profile-image-container::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--accent-warning), transparent);
+      z-index: -1;
+      animation: spin 10s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes spin { 
+      100% { transform: rotate(360deg); } 
+    }
+
+    .profile-info {
+      max-width: 100%;
+    }
+
+    .profile-info h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: white;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      letter-spacing: -1px;
+      word-wrap: break-word;
+    }
+
+    .profile-title {
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 12px;
+      font-weight: 600;
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .profile-description {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .header-stats {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-item {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px 30px;
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+      cursor: default;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .main-nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+      position: relative;
+      z-index: 100;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .main-nav.fixed-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      animation: slideDown 0.4s ease-out;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-sm);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 8px 0;
+      white-space: nowrap;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover { color: var(--accent-primary); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: var(--accent-primary); }
+
+    .social-links-nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      width: 40px; height: 40px;
+      display: flex;
+      align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-link:hover {
+      color: white;
+      background: var(--accent-primary);
+      transform: translateY(-3px) rotate(8deg);
+      box-shadow: var(--shadow-glow);
+    }
+
+    section { padding: 100px 0; position: relative; width: 100%; }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 15px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: table;
+      margin: 0 auto 15px auto;
+      max-width: 100%;
+      padding: 0 10px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #2d3748;
+      font-size: 1.2rem;
+      margin-bottom: 70px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 10px;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      width: 100%;
+    }
+
+    .about-text p {
+      font-size: 1.15rem;
+      color: #2d3748;
+      margin-bottom: 24px;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .skills-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: white;
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(102, 126, 234, 0.15);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-item span {
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-primary);
+    }
+
+    .skill-item i {
+      color: var(--accent-primary);
+      font-size: 1.5rem;
+      animation: bounceSubtle 2s infinite;
+    }
+
+    @keyframes bounceSubtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .ferramentas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 30px;
+    }
+
+    .ferramenta {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .ferramenta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--gradient-bg);
+      opacity: 0;
+      z-index: -1;
+      transition: var(--transition);
+    }
+
+    .ferramenta:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(102, 126, 234, 0.3);
+    }
+
+    .ferramenta:hover::before { opacity: 1; }
+
+    .ferramenta i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text; 
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .ferramenta:hover i { transform: scale(1.2); }
+    .ferramenta span { font-weight: 700; color: var(--text-primary); font-size: 1.1rem; display: block; }
+
+    footer {
+      background: var(--text-primary);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+    }
+
+    footer p { opacity: 0.7; font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; text-align: center; gap: 30px; }
+      .profile-section { flex-direction: column; }
+      .header-stats { gap: 15px; }
+      .stat-item { padding: 15px 10px; }
+      .nav-container { flex-direction: column; gap: 15px; }
+      .nav-links { gap: 15px; font-size: 0.9rem; flex-wrap: wrap; }
+      .about-content { flex-direction: column; }
+      .section-title { font-size: 2.2rem; }
+      .profile-info h1 { font-size: 2.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .section-title { font-size: 1.8rem; }
+      .stat-number { font-size: 2rem; }
+      .stat-label { font-size: 0.75rem; }
+      .ferramenta { padding: 25px 15px; }
+      .header { padding: 50px 0; }
+    }
+  </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #f0f4f8;
+      --bg-secondary: #e1e8ed;
+      --bg-card: #ffffff;
+      
+      --text-primary: #1a1a2e;
+      --text-secondary: #4a5568;
+      --text-muted: #9ca3af;
+      
+      --accent-primary: #667eea;
+      --accent-secondary: #764ba2;
+      --accent-success: #48bb78;
+      --accent-warning: #ed8936;
+      
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-bg: linear-gradient(135deg, #f0f4f8 0%, #e1e8ed 100%);
+
+      --shadow-sm: 0 4px 6px rgba(102, 126, 234, 0.1);
+      --shadow-md: 0 10px 30px rgba(102, 126, 234, 0.15);
+      --shadow-lg: 0 20px 50px rgba(26, 26, 46, 0.15);
+      
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
+      
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--gradient-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 15px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: table;
+      margin: 0 auto 15px auto;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      background: white;
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent-primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid rgba(102, 126, 234, 0.1);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-header {
+      position: relative;
+      height: 180px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-header i {
+      font-size: 4rem;
+      color: white;
+      opacity: 0.9;
+    }
+
+    .project-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--accent-primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .project-year {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .project-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .project-description {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .tech-tag {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .tech-tag {
+      background: var(--accent-primary);
+      color: white;
+    }
+
+    .stats-banner {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      margin-top: 60px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-box {
+      padding: 20px;
+    }
+
+    .stat-box i {
+      font-size: 2.5rem;
+      color: var(--accent-primary);
+      margin-bottom: 15px;
+    }
+
+    .stat-box .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+    }
+
+    .stat-box .label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .filter-buttons { gap: 10px; }
+      .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <header class="header">
+    <div class="container header-content">
+      <div class="profile-section">
+        <div class="profile-image-container">
+          <img src="my.jpg" alt="Foto de Francisco" class="profile-image">
+        </div>
+        <div class="profile-info">
+          <h1 class="">Francisco Ernesto Uqueio</h1>
+          <p class="profile-title ">Engenheiro Civil & Cientista de Dados</p>
+          <p class="profile-description ">Transformando dados em soluções inteligentes e desenvolvendo sistemas escaláveis com IA e Machine Learning.</p>
+        </div>
+      </div>
+      <div class="header-stats ">
+        <div class="stat-item">
+          <span class="stat-number" data-target="30">30</span>
+          <span class="stat-label">Projetos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="15">15</span>
+          <span class="stat-label">Tecnologias</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="5">6</span>
+          <span class="stat-label">Anos Exp.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#ferramentas" class="nav-link">Ferramentas</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+      <div class="social-links-nav">
+        <a href="https://github.com/FranciscoErnestoUqueio287" target="_blank" class="social-link" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/francisco-ernesto-uqueio-71a88634a/" target="_blank" class="social-link" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:franciscoernesto287@gmail.com" class="social-link" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="sobre" class="about-section">
+    <div class="container">
+      <h2 class="section-title ">Sobre Mim</h2>
+      <div class="about-content">
+        <div class="about-text ">
+          <p>Profissional multidisciplinar com experiência sólida em Inteligência Artificial, Ciência de Dados, Desenvolvimento Full Stack e Engenharia Civil. Especializado em Python e Django, com domínio avançado de Deep Learning usando PyTorch.</p>
+          <p>Coordeno iniciativas nacionais de IA no DSAI For Moz, desenvolvo aplicações móveis escaláveis e contribuo para projetos de infraestrutura. Meu foco está em criar soluções tecnológicas de alto impacto que resolvem problemas reais.</p>
+          
+          <div class="skills-highlight">
+            <div class="skill-item">
+              <i class="fas fa-brain"></i>
+              <span>Deep Learning</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-code"></i>
+              <span>Python & Django</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-mobile-alt"></i>
+              <span>Mobile Dev</span>
+            </div>
+            <div class="skill-item">
+              <i class="fas fa-drafting-compass"></i>
+              <span>Eng. Civil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ferramentas">
+    <div class="container">
+      <h2 class="section-title">Stack Tecnológico</h2>
+      <p class="section-subtitle">Ferramentas e tecnologias que domino</p>
+      
+      <div class="ferramentas-grid">
+        <div class="ferramenta">
+          <i class="fab fa-python"></i>
+          <span>Python</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-fire"></i>
+          <span>PyTorch</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-server"></i>
+          <span>Django</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-database"></i>
+          <span>SQL</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fab fa-react"></i>
+          <span>React Native</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-robot"></i>
+          <span>Machine Learning</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-drafting-compass"></i>
+          <span>AutoCAD</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-language"></i>
+          <span>NLP</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fab fa-java"></i>
+          <span>Java</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-chart-line"></i>
+          <span>Data Science</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-cube"></i>
+          <span>ArchiCAD</span>
+        </div>
+        <div class="ferramenta ">
+          <i class="fas fa-desktop"></i>
+          <span>PyQt5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ <section id="projetos">
+    <div class="container">
+      <h2 class="section-title">Projetos Realizados</h2>
+      <p class="section-subtitle">Mais de 30 projetos desenvolvidos ao longo de 5 anos de experiência</p>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+        <button class="filter-btn" data-filter="ai">IA & ML</button>
+        <button class="filter-btn" data-filter="automation">Automação</button>
+        <button class="filter-btn" data-filter="security">Segurança</button>
+        <button class="filter-btn" data-filter="game">Games</button>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Projeto 1: NLP Multilingual -->
+        <div class="project-card" data-category="ai">
+          <div class="project-header">
+            <i class="fas fa-language"></i>
+            <span class="project-tag">IA & NLP</span>
+            <span class="project-year">2023-2025</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sistema de Tradução Multilíngue</h3>
+            <p class="project-description">Sistema de tradução automática para Emakhua, Nyungwe, Xitsonga, Português e Inglês usando NLP e deep learning. Modelos Transformer e LSTM com avaliação BLEU.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Transformers</span>
+              <span class="tech-tag">NLP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 2: Site Escolar -->
+        <div class="project-card" data-category="web">
+          <div class="project-header">
+            <i class="fas fa-school"></i>
+            <span class="project-tag">Web App</span>
+            <span class="project-year">2020</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sistema de Gestão Escolar</h3>
+            <p class="project-description">Plataforma integrada para gestão escolar durante a pandemia COVID-19, centralizando comunicações oficiais e informações acadêmicas com integração de vídeos do YouTube.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 3: Plataforma de Música -->
+        <div class="project-card" data-category="web">
+          <div class="project-header">
+            <i class="fas fa-music"></i>
+            <span class="project-tag">Web App</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Plataforma de Música</h3>
+            <p class="project-description">Site completo para streaming de música com funcionalidades de upload, download e gerenciamento de biblioteca musical.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Django</span>
+              <span class="tech-tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 4: Assistente de Voz -->
+        <div class="project-card" data-category="ai">
+          <div class="project-header">
+            <i class="fas fa-microphone"></i>
+            <span class="project-tag">IA & Voz</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Assistente de Voz & Tradutor</h3>
+            <p class="project-description">Sistema completo com tradutor de texto, tradutor de voz e assistente virtual com comandos básicos usando reconhecimento de fala.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Speech Recognition</span>
+              <span class="tech-tag">TTS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 5: Player de Música -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-play-circle"></i>
+            <span class="project-tag">Desktop</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Player de Música Desktop</h3>
+            <p class="project-description">Aplicativo desktop para reprodução de música com interface intuitiva e gerenciamento de metadados de áudio.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyQt5</span>
+              <span class="tech-tag">Mutagen</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 6: Jogo Snake 2D -->
+        <div class="project-card" data-category="game">
+          <div class="project-header">
+            <i class="fas fa-gamepad"></i>
+            <span class="project-tag">Game 2D</span>
+            <span class="project-year">2020</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Jogo Snake 2D</h3>
+            <p class="project-description">Implementação clássica do jogo Snake com gráficos modernos e sistema de pontuação.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pygame</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 7: Jogo 3D -->
+        <div class="project-card" data-category="game">
+          <div class="project-header">
+            <i class="fas fa-cube"></i>
+            <span class="project-tag">Game 3D</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Jogo 3D</h3>
+            <p class="project-description">Desenvolvimento de jogo 3D com física realista e renderização avançada.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pygame</span>
+              <span class="tech-tag">OpenGL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 8: ChatBot WhatsApp -->
+        <div class="project-card" data-category="automation">
+          <div class="project-header">
+            <i class="fab fa-whatsapp"></i>
+            <span class="project-tag">Automação</span>
+            <span class="project-year">2022</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">ChatBot para WhatsApp</h3>
+            <p class="project-description">Bot automatizado para WhatsApp com processamento de mensagens e respostas inteligentes.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Selenium</span>
+              <span class="tech-tag">NLP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 9: Explorador de Arquivos -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-folder-open"></i>
+            <span class="project-tag">Desktop</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Explorador de Arquivos PyQt5</h3>
+            <p class="project-description">Gerenciador de arquivos completo com interface gráfica moderna e funcionalidades avançadas.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyQt5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 10: Controle Remoto Mobile -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-mobile-alt"></i>
+            <span class="project-tag">Mobile</span>
+            <span class="project-year">2022</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Controle Remoto PC via Celular</h3>
+            <p class="project-description">App Android para controlar PC remotamente via Wi-Fi, incluindo controle de projetor.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Android</span>
+              <span class="tech-tag">Socket</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 11: Apps Matemáticos -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-calculator"></i>
+            <span class="project-tag">Engenharia</span>
+            <span class="project-year">2022-2024</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Suite de Apps Matemáticos</h3>
+            <p class="project-description">Conjunto de aplicativos para cálculos de estatística, estruturas, métodos numéricos (Bisseção, Falsa Posição, Seidel) e betão armado.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">NumPy</span>
+              <span class="tech-tag">SciPy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 12: Web Automation -->
+        <div class="project-card" data-category="automation">
+          <div class="project-header">
+            <i class="fas fa-robot"></i>
+            <span class="project-tag">Automação</span>
+            <span class="project-year">2022</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">WebDriver Automation</h3>
+            <p class="project-description">Sistema de automação de tarefas em navegadores usando Selenium WebDriver para processos repetitivos.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Selenium</span>
+              <span class="tech-tag">ChromeDriver</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 13: Auto-clicker -->
+        <div class="project-card" data-category="automation">
+          <div class="project-header">
+            <i class="fas fa-mouse-pointer"></i>
+            <span class="project-tag">Automação</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sistema Auto-Click</h3>
+            <p class="project-description">Programa para automação de cliques e ações repetitivas com interface configurável.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyAutoGUI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 14: OCR -->
+        <div class="project-card" data-category="ai">
+          <div class="project-header">
+            <i class="fas fa-eye"></i>
+            <span class="project-tag">IA & Visão</span>
+            <span class="project-year">2023</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Sistema OCR</h3>
+            <p class="project-description">Reconhecimento óptico de caracteres em imagens usando deep learning e processamento de imagem.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">OpenCV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 15: App Camera -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-camera"></i>
+            <span class="project-tag">Desktop</span>
+            <span class="project-year">2022</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">App de Câmera com Filtros</h3>
+            <p class="project-description">Aplicativo de câmera para PC com mais de 50 filtros e efeitos em tempo real.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">NumPy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 16: Video Player -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-video"></i>
+            <span class="project-tag">Desktop</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Player de Vídeo</h3>
+            <p class="project-description">Player multimídia com suporte a diversos formatos de vídeo e legendas.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyQt5</span>
+              <span class="tech-tag">FFmpeg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 17: Visualizador de Imagens -->
+        <div class="project-card" data-category="mobile">
+          <div class="project-header">
+            <i class="fas fa-image"></i>
+            <span class="project-tag">Desktop</span>
+            <span class="project-year">2021</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Visualizador Universal</h3>
+            <p class="project-description">App para abrir fotos e formatos não suportados nativamente pelo Windows.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Pillow</span>
+              <span class="tech-tag">PyQt5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto 18: Proxy Server -->
+        <div class="project-card" data-category="security">
+          <div class="project-header">
+            <i class="fas fa-shield-alt"></i>
+            <span class="project-tag">Segurança</span>
+            <span class="project-year">2022</span>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Proxy Server SSL</h3>
+            <p class="project-description">Servidor proxy com suporte SSL e interceptação de tráfego para análise de segurança.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Socket</span>
+              <span class="tech-tag">SSL</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stats-banner">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <i class="fas fa-code"></i>
+            <span class="number">30+</span>
+            <div class="label">Projetos Completos</div>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-brain"></i>
+            <span class="number">5</span>
+            <div class="label">Projetos de IA</div>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-mobile-alt"></i>
+            <span class="number">10+</span>
+            <div class="label">Apps Desktop/Mobile</div>
+          </div>
+          <div class="stat-box">
+            <i class="fas fa-robot"></i>
+            <span class="number">8+</span>
+            <div class="label">Sistemas de Automação</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+        
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('hidden');
+          } else {
+            if (card.getAttribute('data-category') === filter) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
+  <section id="contato">
+    <div class="container">
+      <h2 class="section-title ">Entre em Contato</h2>
+      <p class="section-subtitle ">Vamos conversar sobre tecnologia e inovação</p>
+      
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        <div style="background: white; border-radius: var(--border-radius-lg); padding: 40px; width: 100%; max-width: 300px; box-shadow: var(--shadow-sm); transition: var(--transition); text-align: center; border: 1px solid transparent;">
+          <i class="fas fa-envelope" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+          <h3 style="margin: 10px 0; font-size: 1.1rem; color: var(--text-primary);">E-mail</h3>
+          <a href="mailto:franciscoernesto287@gmail.com" style="color: var(--text-secondary); text-decoration: none; font-size: 0.95rem;">franciscoernesto287@gmail.com</a>
+        </div>
+        <div style="background: white; border-radius: var(--border-radius-lg); padding: 40px; width: 100%; max-width: 300px; box-shadow: var(--shadow-sm); transition: var(--transition); text-align: center; border: 1px solid transparent;">
+          <i class="fab fa-linkedin" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+          <h3 style="margin: 10px 0; font-size: 1.1rem; color: var(--text-primary);">LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/francisco-ernesto-uqueio-71a88634a/" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.95rem;">/francisco-ernesto-uqueio</a>
+        </div>
+        <div style="background: white; border-radius: var(--border-radius-lg); padding: 40px; width: 100%; max-width: 300px; box-shadow: var(--shadow-sm); transition: var(--transition); text-align: center; border: 1px solid transparent;">
+          <i class="fab fa-github" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+          <h3 style="margin: 10px 0; font-size: 1.1rem; color: var(--text-primary);">GitHub</h3>
+          <a href="https://github.com/FranciscoErnestoUqueio287" target="_blank" style="color: var(--text-secondary); text-decoration: none; font-size: 0.95rem;">/FranciscoErnestoUqueio287</a>
+        </div>
+        <div style="background: white; border-radius: var(--border-radius-lg); padding: 40px; width: 100%; max-width: 300px; box-shadow: var(--shadow-sm); transition: var(--transition); text-align: center; border: 1px solid transparent;">
+          <i class="fas fa-phone" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+          <h3 style="margin: 10px 0; font-size: 1.1rem; color: var(--text-primary);">Telefone</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">+258 84 123 6144</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Francisco Ernesto Uqueio — Desenvolvido com <i class="fas fa-heart" style="color: var(--accent-primary);"></i> e Tecnologia.</p>
+  </footer>
+
+  <script>
+    function reveal() {
+      var reveals = document.querySelectorAll(".");
+      var windowHeight = window.innerHeight;
+      var elementVisible = 100;
+
+      for (var i = 0; i < reveals.length; i++) {
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+
+    const stats = document.querySelectorAll('.stat-number');
+
+    function animateStats() {
+      stats.forEach(stat => {
+        const target = +stat.getAttribute('data-target');
+        const count = +stat.innerText;
+        const increment = target / 50;
+
+        if (count < target) {
+          stat.innerText = Math.ceil(count + increment);
+          setTimeout(animateStats, 40);
+        } else {
+          stat.innerText = target + '+';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', animateStats);
+
+    const nav = document.querySelector('.main-nav');
+    const placeholder = document.createElement('div');
+    placeholder.className = 'nav-placeholder';
+    if (nav) {
+      nav.parentNode.insertBefore(placeholder, nav);
+    }
+
+    window.addEventListener('scroll', () => {
+      const sobre = document.getElementById('sobre');
+      if (!nav || !sobre) return;
+
+      const limit = sobre.offset</script>
+	  </body>
+	  </html>
