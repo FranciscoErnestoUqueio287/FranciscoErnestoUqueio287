@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Francisco Ernesto Uqueio | Engenheiro Civil & Cientista de Dados</title>
+  <title>Francisco Ernesto Uqueio | FullStack Developer, Engenheiro Civil & Cientista de Dados</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -697,7 +697,7 @@
       position: absolute;
       bottom: 15px;
       left: 15px;
-      background: rgba(255, 255, 255, 0.2);
+      background:  var(--accent-primary);
       backdrop-filter: blur(10px);
       color: white;
       padding: 6px 14px;
@@ -796,6 +796,18 @@
       .filter-buttons { gap: 10px; }
       .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
     }
+	.project-image {
+  width: 100%;   
+  height: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-image:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
 <body>
@@ -811,7 +823,7 @@
         </div>
         <div class="profile-info">
           <h1 class="">Francisco Ernesto Uqueio</h1>
-          <p class="profile-title ">Engenheiro Civil & Cientista de Dados</p>
+          <p class="profile-title ">FullStack Developer, Engenheiro Civil & Cientista de Dados</p>
           <p class="profile-description ">Transformando dados em soluções inteligentes e desenvolvendo sistemas escaláveis com IA e Machine Learning.</p>
         </div>
       </div>
@@ -959,28 +971,37 @@
       <div class="projects-grid">
         
         <!-- Projeto 1: NLP Multilingual -->
-        <div class="project-card" data-category="ai">
-          <div class="project-header">
-            <i class="fas fa-language"></i>
-            <span class="project-tag">IA & NLP</span>
-            <span class="project-year">2023-2025</span>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Sistema de Tradução Multilíngue</h3>
-            <p class="project-description">Sistema de tradução automática para Emakhua, Nyungwe, Xitsonga, Português e Inglês usando NLP e deep learning. Modelos Transformer e LSTM com avaliação BLEU.</p>
-            <div class="project-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">PyTorch</span>
-              <span class="tech-tag">Transformers</span>
-              <span class="tech-tag">NLP</span>
-            </div>
-          </div>
-        </div>
+       <div class="project-card" data-category="ai">
+  <div class="project-header">
+    <!-- Ícone substituído por imagem clicável -->
+    <a href="https://github.com/FranciscoErnestoUqueio287/nlpclassifier" target="_blank">
+      <img src="trad.png" alt="Preview do projeto" class="project-image"/>
+    </a>
+    <span class="project-tag">IA & NLP</span>
+    <span class="project-year">2023-2025</span>
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">Sistema de Tradução Multilíngue</h3>
+    <p class="project-description">
+      Sistema de tradução automática para Emakhua, Nyungwe, Xitsonga, Português e Inglês usando NLP e deep learning. Modelos Transformer e LSTM com avaliação BLEU.
+    </p>
+    <div class="project-tech">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">PyTorch</span>
+      <span class="tech-tag">Transformers</span>
+      <span class="tech-tag">NLP</span>
+    </div>
+  </div>
+</div>
+
 
         <!-- Projeto 2: Site Escolar -->
         <div class="project-card" data-category="web">
           <div class="project-header">
-            <i class="fas fa-school"></i>
+            <!-- Ícone substituído por imagem clicável -->
+    <a href="https://github.com/FranciscoErnestoUqueio287/escola" target="_blank">
+      <img src="esc.png" alt="Preview do projeto" class="project-image"/>
+    </a>
             <span class="project-tag">Web App</span>
             <span class="project-year">2020</span>
           </div>
@@ -999,7 +1020,9 @@
         <!-- Projeto 3: Plataforma de Música -->
         <div class="project-card" data-category="web">
           <div class="project-header">
-            <i class="fas fa-music"></i>
+           <a href="https://github.com/FranciscoErnestoUqueio287/BeatBox/" target="_blank">
+      <i class="fa fa-music"></i>
+    </a>
             <span class="project-tag">Web App</span>
             <span class="project-year">2021</span>
           </div>
